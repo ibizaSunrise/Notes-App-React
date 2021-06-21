@@ -10,7 +10,7 @@ export default function Navbar() {
                 Notes App
             </div>
             <ul className="navbar-nav">
-                <li className="nav-item">
+                <li className="nav-item ">
                     <NavLink className="nav-link" to="/" exact>Главная</NavLink>
                 </li>
                 <li className="nav-item">

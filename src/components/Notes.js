@@ -4,7 +4,7 @@ export default function Notes({ notes }) {
     return (
         <ul className="list-group">
             {notes.map(note => (
-                <li class="list-group-item note"
+                <li className="list-group-item note"
                     key={note.id}>
                     <div>
                         <strong>{note.title}</strong>

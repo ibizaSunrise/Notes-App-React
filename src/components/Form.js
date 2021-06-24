@@ -8,10 +8,10 @@ export default function Form() {
         e.preventDefault();
 
         if (value.trim()) {
-            alert.show("Замктка была создана", 'success');
+            alert.show(" Замeтка была создана", 'success');
             setValue('');
         }else{
-            alert.show("Введите название заметки")
+            alert.show(" Введите название заметки")
         }
 
     }

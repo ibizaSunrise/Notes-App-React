@@ -1,19 +1,19 @@
 import axios from 'axios'
-import React, {useReducer} from 'react';
+import React, { useReducer } from 'react';
 import { REMOVE_NOTE, SHOW_LOADER } from '../types';
 import { FirebaseContext } from './firebaseContext';
-import {firebaseReducer} from './firebaseReducer'
+import { firebaseReducer } from './firebaseReducer'
 
-const url = process.env.RECT_APP_DB_URL;
+const url = "https://react-hooks-bebc4-default-rtdb.firebaseio.com/";
 
-export const FirebaseState = ({children}) =>{
-    const initialState ={
+export const FirebaseState = ({ children }) => {
+    const initialState = {
         notes: [],
         loading: false
     }
     const [state, dispatch] = useReducer(firebaseReducer, initialState);
 
-    const showLoader = () => dispatch({type: SHOW_LOADER})
+    const showLoader = () => dispatch({ type: SHOW_LOADER })
 
     const fetchNotes = async () => {
         showLoader();
@@ -22,13 +22,18 @@ export const FirebaseState = ({children}) =>{
     }
 
     const addNote = async title => {
-        const note ={
+        const note = {
             title, date: new Date().toJSON()
         }
 
-        const res = await axios.post(`${url}/notes.json`, note);
+        try {
+            const res = await axios.post(`${url}/notes.json`, note);
+            console.log('addNote', res.data)
+            //dispatch({type: ADD_NOTE, payload})
+        } catch (e) {
+            throw new Error(e.message)
+        }
 
-        console.log('addNote', res.data)
     }
 
     const remoweNote = async id => {

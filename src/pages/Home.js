@@ -1,21 +1,23 @@
-import React, {useContext, useEffect} from 'react'
+import React, { useContext, useEffect } from 'react'
 import Form from '../components/Form'
 import Notes from '../components/Notes'
-import {FirebaseContext} from '../context/firebase/firebaseContext'
+import { FirebaseContext } from '../context/firebase/firebaseContext'
 import Loader from '../components/Loader'
 
 export default function Home() {
-    const {loading, notes, fetchNotes} = useContext(FirebaseContext);
+    const { loading, notes, fetchNotes, removeNote } = useContext(FirebaseContext);
     useEffect(() => {
         fetchNotes()
         // eslint-disable-next-line
     }, [])
     return (
         <>
-            <Form/>
+            <Form />
             <hr />
-            {loading ? <Loader/> : <Notes notes = {notes}/>}
-            <Notes notes={notes}/>
+            {loading
+                ? <Loader />
+                : <Notes notes={notes} onRemove={removeNote} />
+            }
         </>
     )
 }

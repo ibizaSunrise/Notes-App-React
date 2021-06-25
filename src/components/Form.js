@@ -12,17 +12,14 @@ export default function Form() {
 
         if (value.trim()) {
             firebase.addNote(value.trim()).then(() => {
-                alert.show(" Замeтка была создана", 'success');
+              alert.show('Заметка была создана', 'success')
+            }).catch(() => {
+              alert.show('Что-то пошло не так', 'danger')
             })
-            /*.cath(() => {
-                alert.show("Что-то пошло не так", 'danger');
-            })
-            
-            */
-            setValue('');
-        } else {
-            alert.show(" Введите название заметки")
-        }
+            setValue('')
+          } else {
+            alert.show('Введите название заметки')
+          }
 
     }
     return (

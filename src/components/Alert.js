@@ -9,7 +9,7 @@ export default function Alert() {
         return null;
     }
     return (
-        <CSSTransition in = {alert.visible} timeout ={{enter: 500, exit: 350}} classNames ={'alert'} mountOnEnter unmountOnExit>
+        <CSSTransition in = {alert.visible} timeout ={{enter: 500, exit: 350}} classNames ={'alert_animation'} mountOnEnter unmountOnExit>
             <div className={`alert block_alert alert-${alert.type || 'warning'}`}>
                 <div>
                     <strong>Внимание!</strong>
